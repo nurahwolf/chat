@@ -17,13 +17,15 @@ jobs:
                           uses: rust-build/rust-build.action@latest
                           env:
                                   EXTRA_FILES: "README.md LICENSE"
-                                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                                  RUSTTARGET: ${{ matrix.target }}
-                                  SRC_DIR: "server"
-                        - name: Compile and release - Client
-                          uses: rust-build/rust-build.action@latest
-                          env:
+                          with:
                                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                                   RUSTTARGET: ${{ matrix.target }}
                                   SRC_DIR: "client"
+                        - name: Compile and release - Server
+                          uses: rust-build/rust-build.action@latest
+                          env:
                                   EXTRA_FILES: "README.md LICENSE"
+                          with:
+                                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                                  RUSTTARGET: ${{ matrix.target }}
+                                  SRC_DIR: "server"
