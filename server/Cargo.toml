@@ -1,0 +1,12 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-channel = "2.3.1"
+async-dup.workspace = true
+common.workspace = true
+smol.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
