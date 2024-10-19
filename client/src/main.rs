@@ -4,8 +4,8 @@ use std::net::{TcpStream, ToSocketAddrs};
 
 use smol::{future, io, Async, Unblock};
 
-const DNS_ADDR: &str = "localhost:6969";
-const IP_ADDR: ([u8; 4], u16) = ([0, 0, 0, 0], 6969);
+const DNS_ADDR: &str = "barn.lunar.cloud:6969";
+const IP_ADDR: ([u8; 4], u16) = ([81, 2, 94, 163], 6969);
 
 async fn connect() -> io::Result<Async<TcpStream>> {
 	let dns_addr = DNS_ADDR.to_socket_addrs().map(|mut dns| dns.next());
