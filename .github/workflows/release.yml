@@ -13,12 +13,17 @@ jobs:
                                 target: [x86_64-pc-windows-gnu, x86_64-unknown-linux-musl]
                 steps:
                         - uses: actions/checkout@master
-                        - name: Compile and release
-                          uses: rust-build/rust-build.action@v1.4.5
+                        - name: Compile and release - Client
+                          uses: rust-build/rust-build.action@latest
                           env:
                                   EXTRA_FILES: "README.md LICENSE"
                                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                                  SRC_DIR: ${{ matrix.package }}
-                          with:
                                   RUSTTARGET: ${{ matrix.target }}
-
+                                  SRC_DIR: "server"
+                        - name: Compile and release - Client
+                          uses: rust-build/rust-build.action@latest
+                          env:
+                                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                                  RUSTTARGET: ${{ matrix.target }}
+                                  SRC_DIR: "client"
+                                  EXTRA_FILES: "README.md LICENSE"
